@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
 from .database import SessionLocal, engine, Base
-from .schemas import TaskBase, TaskCreate, TaskResponse, TaskPatch
+from .schemas import TaskCreate, TaskResponse, TaskPatch
 from .models import Task
 
 Base.metadata.create_all(bind=engine)
@@ -70,7 +70,7 @@ def delete_task(task_id: int, db: Session = Depends(get_db)):
 
 
 @app.patch("/tasks/{task_id}/complete", response_model=TaskResponse)
-def complete_update_task(task_id: int, task_data: TaskPatch, db: Session = Depends(get_db)):
+def patch_task(task_id: int, task_data: TaskPatch, db: Session = Depends(get_db)):
     task = db.query(Task).filter(Task.id == task_id).first()
     if not task:
         raise HTTPException(status_code=404, detail="Task not found")

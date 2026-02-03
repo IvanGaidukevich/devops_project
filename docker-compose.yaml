@@ -10,6 +10,14 @@ services:
       - .env
     depends_on:
       - db
+      - tests
+
+  tests:
+    build: ./backend
+    command: >
+      sh -c "pytest --cov=app --cov-report=term-missing --cov-fail-under=80"
+    volumes:
+      - ./backend:/app
 
   db:
     image: postgres:15
