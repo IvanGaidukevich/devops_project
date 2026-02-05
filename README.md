@@ -1,1 +1,1 @@
-![CI](https://github.com/ivan-gaidukevich/devops_project/actions/workflows/ci.yml/badge.svg)
+[![CI Pipeline](https://github.com/IvanGaidukevich/devops_project/actions/workflows/ci.yml/badge.svg)](https://github.com/IvanGaidukevich/devops_project/actions/workflows/ci.yml)
